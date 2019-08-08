@@ -97,24 +97,20 @@ open class NonTorsoLocationFactory() : LocationFactory() {
 
 class SideTorsoFactory() : TorsoLocationFactory() {
     fun print() {
-        println("  side_torso <")
         printArmorStructure()
         println()
         printEquipment()
-        println("  >")
     }
 }
 
 class CenterTorsoFactory() : TorsoLocationFactory() {
     fun print() {
-        println("  center torso <")
         printArmorStructure()
         println()
         printCritTableEntry(CritTableEntry("engine", 3))
         printCritTableEntry(CritTableEntry("gyro", 4))
         printCritTableEntry(CritTableEntry("engine", 3))
         printEquipment()
-        println("  >")
     }
 }
 
@@ -130,7 +126,6 @@ class ArmFactory() : NonTorsoLocationFactory() {
     }
 
     fun print() {
-        println("  arm <")
         printArmorStructure()
         println()
         printCritTableEntry(CritTableEntry("Shoulder"))
@@ -144,13 +139,11 @@ class ArmFactory() : NonTorsoLocationFactory() {
             }
         }
         printEquipment()
-        println("  >")
     }
 }
 
 class LegFactory() : NonTorsoLocationFactory() {
     fun print() {
-        println("  leg <")
         printArmorStructure()
         println()
         printCritTableEntry(CritTableEntry("Hip"))
@@ -158,7 +151,6 @@ class LegFactory() : NonTorsoLocationFactory() {
         printCritTableEntry(CritTableEntry("Lower Leg Actuator"))
         printCritTableEntry(CritTableEntry("Foot Actuator"))
         printEquipment()
-        println("  >")
     }
 }
 
@@ -168,7 +160,6 @@ class HeadFactory() : NonTorsoLocationFactory() {
     }
 
     fun print() {
-        println("  head <")
         printArmorStructure()
         println()
         printCritTableEntry(CritTableEntry("Life Support"))
@@ -177,7 +168,6 @@ class HeadFactory() : NonTorsoLocationFactory() {
         printEquipment()
         printCritTableEntry(CritTableEntry("Sensors"))
         printCritTableEntry(CritTableEntry("Life Support"))
-        println("  >")
     }
 }
 
@@ -281,14 +271,38 @@ class MechBuilder() {
         println("  jump: $jumpValue")
         println("  BV: $battleValueValue")
         println()
+        println("  head <")
         headFactory?.print()
+        println("  >")
+
+        println("  left arm <")
         leftArmFactory?.print()
+        println("  >")
+
+        println("  left torso <")
         leftTorsoFactory?.print()
+        println("  >")
+
+        println("  left leg <")
         leftLegFactory?.print()
+        println("  >")
+
+        println("  center torso <")
         centerTorsoFactory?.print()
+        println("  >")
+
+        println("  right arm <")
         rightArmFactory?.print()
+        println("  >")
+
+        println("  right torso <")
         rightTorsoFactory?.print()
+        println("  >")
+
+        println("  right leg <")
         rightLegFactory?.print()
+        println("  >")
+
     }
 }
 
