@@ -13,7 +13,7 @@ fun printCritTableEntry(item: CritTableEntry) {
         }
         else -> {
             println("    ⌈ ${item.name}")
-            for (x in 1..(item.entries - 1)) {
+            for (x in 2..(item.entries - 1)) {
                 println("    | ${item.name}")
             }
             println("    ⌊ ${item.name}")
@@ -110,15 +110,9 @@ class CenterTorsoFactory() : TorsoLocationFactory() {
         println("  center torso <")
         printArmorStructure()
         println()
-        for (x in 1..3) {
-            println("    engine")
-        }
-        for (x in 1..4) {
-            println("    gyro")
-        }
-        for (x in 1..3) {
-            println("    engine")
-        }
+        printCritTableEntry(CritTableEntry("engine", 3))
+        printCritTableEntry(CritTableEntry("gyro", 4))
+        printCritTableEntry(CritTableEntry("engine", 3))
         printEquipment()
         println("  >")
     }
@@ -139,14 +133,14 @@ class ArmFactory() : NonTorsoLocationFactory() {
         println("  arm <")
         printArmorStructure()
         println()
-        println("    Shoulder")
-        println("    Upper Arm Actuator")
+        printCritTableEntry(CritTableEntry("Shoulder"))
+        printCritTableEntry(CritTableEntry("Upper Arm Actuator"))
         when (actuatorsValue) {
             LowerArmActuators.NONE -> {}
-            LowerArmActuators.LOWER -> println("    Lower Arm Actuator")
+            LowerArmActuators.LOWER -> printCritTableEntry(CritTableEntry(("Lower Arm Actuator")))
             LowerArmActuators.LOWERANDHAND -> {
-                println("    Lower Arm Actuator")
-                println("    Hand Actuator")
+                printCritTableEntry(CritTableEntry(("Lower Arm Actuator")))
+                printCritTableEntry(CritTableEntry(("Hand Actuator")))
             }
         }
         printEquipment()
@@ -159,10 +153,10 @@ class LegFactory() : NonTorsoLocationFactory() {
         println("  leg <")
         printArmorStructure()
         println()
-        println("    Hip")
-        println("    Upper Leg Actuator")
-        println("    Lower Leg Actuator")
-        println("    Foot Actuator")
+        printCritTableEntry(CritTableEntry("Hip"))
+        printCritTableEntry(CritTableEntry("Upper Leg Actuator"))
+        printCritTableEntry(CritTableEntry("Lower Leg Actuator"))
+        printCritTableEntry(CritTableEntry("Foot Actuator"))
         printEquipment()
         println("  >")
     }
@@ -177,12 +171,12 @@ class HeadFactory() : NonTorsoLocationFactory() {
         println("  head <")
         printArmorStructure()
         println()
-        println("    Life Support")
-        println("    Sensors")
-        println("    Cockpit")
+        printCritTableEntry(CritTableEntry("Life Support"))
+        printCritTableEntry(CritTableEntry("Sensors"))
+        printCritTableEntry(CritTableEntry("Cockpit"))
         printEquipment()
-        println("    Sensors")
-        println("    Life Support")
+        printCritTableEntry(CritTableEntry("Sensors"))
+        printCritTableEntry(CritTableEntry("Life Support"))
         println("  >")
     }
 }
