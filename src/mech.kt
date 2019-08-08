@@ -1,6 +1,8 @@
 import javax.xml.stream.Location
 
-data class CritTableEntry(val name: String, val entries: Int) {}
+data class CritTableEntry(val name: String, val entries: Int) {
+    constructor(name: String) : this(name, 1)
+}
 
 fun printCritTableEntry(item: CritTableEntry) {
     when (item.entries) {
