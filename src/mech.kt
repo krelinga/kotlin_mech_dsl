@@ -39,17 +39,17 @@ open class LocationFactory() {
     fun printEquipment() {
         for (item in critEntries) {
             when (item.entries) {
-                1 -> println("    ${item.name}")
+                1 -> println("    [ ${item.name}")
                 2 -> {
-                    println("    / ${item.name}")
-                    println("    \\ ${item.name}")
+                    println("    ⌈ ${item.name}")
+                    println("    ⌊ ${item.name}")
                 }
                 else -> {
-                    println("    / ${item.name}")
+                    println("    ⌈ ${item.name}")
                     for (x in 1..(item.entries - 1)) {
                         println("    | ${item.name}")
                     }
-                    println("    \\ ${item.name}")
+                    println("    ⌊ ${item.name}")
                 }
             }
         }
