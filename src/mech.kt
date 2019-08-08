@@ -2,6 +2,23 @@ import javax.xml.stream.Location
 
 data class CritTableEntry(val name: String, val entries: Int) {}
 
+fun printCritTableEntry(item: CritTableEntry) {
+    when (item.entries) {
+        1 -> println("    [ ${item.name}")
+        2 -> {
+            println("    ⌈ ${item.name}")
+            println("    ⌊ ${item.name}")
+        }
+        else -> {
+            println("    ⌈ ${item.name}")
+            for (x in 1..(item.entries - 1)) {
+                println("    | ${item.name}")
+            }
+            println("    ⌊ ${item.name}")
+        }
+    }
+}
+
 // A class to allow us to add standard things that might live in any part of a 'mech.
 open class LocationFactory() {
     protected var critEntries = mutableListOf<CritTableEntry>()
@@ -38,20 +55,7 @@ open class LocationFactory() {
 
     fun printEquipment() {
         for (item in critEntries) {
-            when (item.entries) {
-                1 -> println("    [ ${item.name}")
-                2 -> {
-                    println("    ⌈ ${item.name}")
-                    println("    ⌊ ${item.name}")
-                }
-                else -> {
-                    println("    ⌈ ${item.name}")
-                    for (x in 1..(item.entries - 1)) {
-                        println("    | ${item.name}")
-                    }
-                    println("    ⌊ ${item.name}")
-                }
-            }
+            printCritTableEntry(item)
         }
     }
 }
