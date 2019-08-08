@@ -162,7 +162,7 @@ class LegFactory() : NonTorsoLocationFactory() {
         println("    Lower Leg Actuator")
         println("    Foot Actuator")
         printEquipment()
-        println(">")
+        println("  >")
     }
 }
 
