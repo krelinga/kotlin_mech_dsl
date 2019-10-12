@@ -1,5 +1,3 @@
-import javax.xml.stream.Location
-
 data class CritTableEntry(val name: String, val entries: Int) {
     constructor(name: String) : this(name, 1)
 }
